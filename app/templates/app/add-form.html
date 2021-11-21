@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/progress-page.css' %}">
+
+</head>
+<body>
+	<div class="container">
+		<div class="main">
+			
+			<form id="add-form" method="post" action="{% url 'addForm' %}">
+				{% csrf_token %}
+				<input style="width: 100%; margin-bottom: 25px; height: 50px;" type="text" placeholder="Title" name="title"><br>
+					
+					
+				<div class="grid-container">
+					<h3>Goals/Milestones</h3>
+			
+					<button style="width: 90px;" class="btn" type="button" onclick="createNewElement();">+ Goals</button>
+				
+				</div>
+				<hr>
+				<div id="add-goals">
+					<input type='text' name="name">
+				</div>
+
+				<div>
+					<button class="btn" type="submit">Submit</button>
+				</div>
+					
+
+			</form>
+		
+
+		</div>
+	</div>
+
+<script type="text/javascript">
+	function createNewElement() {
+		
+		var element = "<div class = 'goal-input flex-row d-flex'><input type='text' name='name'><a href = '#' onclick = 'remove(this);'>X</a></div>";
+		document.getElementById("add-goals").innerHTML += element;
+	}
+	function remove(el) {
+		var element = el.parentElement;
+		element.remove();
+	}
+</script>
+</body>
+</html>

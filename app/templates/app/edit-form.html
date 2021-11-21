@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/progress-page.css' %}">
+</head>
+<body>
+	<div class="container">
+		<div class="main">
+			<h3 style="font-weight: bold;">Mechanics of Materials</h3>
+			<hr>
+			<form id="form-check" method="post" action="{% url 'editForm' pk=primary_id %}">
+				{% csrf_token %}
+				{% for obj in objs %}
+				<label class="check-container">
+					{{obj.name}}
+					{% if obj.status == False %}
+					<input type="checkbox" value="{{obj.id}}" name="box">
+					<span class="checkmark"></span>
+					{% endif %}
+					{% if obj.status == True %}
+					<input type="checkbox" value="{{obj.id}}" name="box" checked>
+					<span class="checkmark"></span>
+					{% endif %}
+				</label>
+				{% endfor %}
+
+				<div>
+					<button class="btn" type="submit">Submit</button>
+				</div>
+			</form>
+		</div>	
+	</div>
+</body>
+</html>
