@@ -1,0 +1,91 @@
+/*Global styles*/
+
+body{
+	background-color: #1B262C;
+}
+
+.main{
+	width: 800px;
+	background-color: #627D98;
+	padding: 15px;
+	margin: 15px auto;
+	border-radius: 10px;
+}
+
+hr{
+	height: 1px;
+	background-color: #BBE1FA;
+}
+
+button{
+	border-radius: 20px !important;
+	background-color: #AEEE98 !important;
+	margin: 50px 0 0 0;
+}
+
+button a{
+	color: #1B262C;
+	text-decoration: none;
+}
+
+button a:hover{
+	color: #1B262C;
+	text-decoration: none;
+}
+
+h3{
+	color: #FAFAFA;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+p{
+	color: #FAFAFA;
+	font-weight: bold;
+}
+
+#add-form input{
+	background-color: #415365;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	margin: 10px 0;
+
+	max-width: 400px;
+	width: 100%;
+
+	transition: 0.3s;
+	
+	color: #DBDDE3;
+}
+
+#add-form input:focus{
+	outline: none !important;
+	border: 1px solid #81AD75;
+}
+
+#add-form a{
+	color: #AEEE98;
+	margin: 10px 10px;
+}
+
+#add-form a:hover{
+	text-decoration: none;
+}
+/*---------------------------------------*/
+
+#title_inp {
+
+	max-width: none !important;
+	width: 100%; 
+	margin-bottom: 25px; 
+	height: 50px;
+}
+
+#add-btn {
+	background-color: transparent !important;
+	border-color: #AEEE98;
+	color: #AEEE98;
+	border-width: 2px;
+}
+
+

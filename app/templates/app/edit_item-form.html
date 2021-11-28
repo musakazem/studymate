@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>edit-item</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/edit_item-form.css' %}">
+</head>
+<body>
+	<div class="container">
+		<div class="main">
+			<form id = "add-form" action="{% url 'updateForm' pk=item.id%}">
+				{% csrf_token %}
+
+				<input id="title_inp" type="text" value="{{item.title}}" name="">
+				<br><button id="add-btn" onclick="createNewElement();" class="btn" type="submit">+</button><br>
+				<div id="add-goals">
+					{% for goal in goals %}
+					<div>
+						<input type="text" value="{{goal.name}}" name=""><a href = '#' onclick = 'remove(this);'>X</a>
+					</div>
+					{% endfor %}
+				</div>
+				<button class="btn" type="submit">Update</button>
+			</form>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		function createNewElement() {
+			
+			var element = "<div><input type='text' value='chapter1' name=''><a href = '#' onclick = 'remove(this);'>X</a></div>";
+			document.getElementById("add-goals").innerHTML += element;
+		}
+		
+		function remove(el) {
+			var element = el.parentElement;
+			element.remove();
+		}
+	</script>
+</body>
+</html>

@@ -36,15 +36,20 @@ def addForm(request):
 		print(post_title)
 		print(names)
 
-		title_obj = Items(title = post_title)
-		title_obj.save()
+		if not post_title or names == ['']:
 
-		title_id = Items.objects.get(title = post_title).id
-		for name in names:
-			name_obj = Goals(name = name, item_id = title_id)
-			name_obj.save()
+			return render(request, 'add-form.html')
 
-		return render(request, 'add-form.html')
+		else:
+			title_obj = Items(title = post_title)
+			title_obj.save()
+
+			title_id = Items.objects.get(title = post_title).id
+			for name in names:
+				name_obj = Goals(name = name, item_id = title_id)
+				name_obj.save()
+
+			return redirect('dashboard')
 		
 	return render(request, 'add-form.html')
 
@@ -73,5 +78,25 @@ def editForm(request, pk):
 
 
 	return render(request, 'edit-form.html',context)
+
+def updateForm(request, pk):
+
+	item = Items.objects.get(id = pk)
+	goals = Goals.objects.filter(item_id = pk)
+
+	context = {
+
+		"item": item,
+		"goals": goals,
+	}
+
+
+
+	return render(request, 'edit_item-form.html', context)
+	
+
+
+
+
 
 
