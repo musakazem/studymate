@@ -12,15 +12,15 @@
 <body>
 	<div class="container">
 		<div class="main">
-			<form id = "add-form" action="{% url 'updateForm' pk=item.id%}">
+			<form id = "add-form" method="post" action="{% url 'updateForm' pk=item.id%}">
 				{% csrf_token %}
 
-				<input id="title_inp" type="text" value="{{item.title}}" name="">
-				<br><button id="add-btn" onclick="createNewElement();" class="btn" type="submit">+</button><br>
+				<input id="title_inp" type="text" value="{{item.title}}" name="title">
+				<br><button type="button" id="add-btn" onclick="createNewElement();" class="btn">+</button><br>
 				<div id="add-goals">
 					{% for goal in goals %}
 					<div>
-						<input type="text" value="{{goal.name}}" name=""><a href = '#' onclick = 'remove(this);'>X</a>
+						<input type="text" value="{{goal.name}}" name="goal_item"><a href = '#' onclick = 'remove(this);'>X</a>
 					</div>
 					{% endfor %}
 				</div>
@@ -33,7 +33,7 @@
 	<script type="text/javascript">
 		function createNewElement() {
 			
-			var element = "<div><input type='text' value='chapter1' name=''><a href = '#' onclick = 'remove(this);'>X</a></div>";
+			var element = "<div><input type='text' value='chapter1' name='goal_item'><a href = '#' onclick = 'remove(this);'>X</a></div>";
 			document.getElementById("add-goals").innerHTML += element;
 		}
 		

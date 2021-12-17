@@ -12,16 +12,22 @@ def dashboard(request):
 	for obj in objs:
 
 		item = obj.id
-		print(item)
+		# print(item)
 		goals = Goals.objects.filter(item_id = item)
 		completed = goals.filter(status = True)
 
-		percentage = (len(completed)/len(goals))*100
-		print(ceil(percentage))
-		progress.append(ceil(percentage))
+		try:
+			percentage = (len(completed)/len(goals))*100
+			# print(ceil(percentage))
+			progress.append(ceil(percentage))
+		except:
+			percentage = 0
+			progress.append(percentage)
 
 	contents = zip(objs,progress)
 
+	print(len(objs))
+	print(len(progress))
 	context = {"contents":contents}
 	return render(request, 'dashboard-page.html', context)
 
@@ -56,8 +62,10 @@ def addForm(request):
 
 def editForm(request, pk):
 
+	title = Items.objects.get(id = pk)
 	objs = Goals.objects.filter(item_id = pk)
-	context = {"objs":objs, "primary_id":pk}
+	context = {"objs":objs, "primary_id":pk, "title":title}
+
 
 	if request.method == "POST":
 		boxes = request.POST.getlist('box')
@@ -91,6 +99,33 @@ def updateForm(request, pk):
 	}
 
 
+	if request.method == "POST":
+
+		goal_items = request.POST.getlist("goal_item")
+		new_title = request.POST.get("title")
+		print(goal_items)
+		print(new_title)
+
+		
+		item.title = new_title
+		item.save()
+
+		
+		goals.delete()
+
+		if not goal_items:
+			item.delete()
+		else:
+			for item_name in goal_items:
+				
+				update = Goals(name = item_name, item_id = pk)
+				update.save()
+
+		return redirect('dashboard')
+
+		
+
+	print("Skipped Post")
 
 	return render(request, 'edit_item-form.html', context)
 	

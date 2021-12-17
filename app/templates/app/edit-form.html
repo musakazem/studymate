@@ -11,7 +11,8 @@
 <body>
 	<div class="container">
 		<div class="main">
-			<h3 style="font-weight: bold;">Mechanics of Materials</h3>
+			<h3 style="font-weight: bold;">{{title.title}}</h3>
+			<a href="{% url 'updateForm' pk=title.id %}"><button style="margin-left: 0;" class="btn" type="submit">EDIT</button></a>
 			<hr>
 			<form id="form-check" method="post" action="{% url 'editForm' pk=primary_id %}">
 				{% csrf_token %}
