@@ -16,7 +16,14 @@
 				{% csrf_token %}
 
 				<input id="title_inp" type="text" value="{{item.title}}" name="title">
-				<br><button type="button" id="add-btn" onclick="createNewElement();" class="btn">+</button><br>
+				<br>
+				<div class="btn-container">
+					<div class="add-btn"><button type="button" id="add-btn" onclick="createNewElement();" class="btn">+ Goals</button></div>
+
+					<div class="delete-btn"><button type="button" id="delete-btn" class="btn">Remove goal</button></div>
+					
+				</div>
+				<br>
 				<div id="add-goals">
 					{% for goal in goals %}
 					<div>
@@ -33,7 +40,7 @@
 	<script type="text/javascript">
 		function createNewElement() {
 			
-			var element = "<div><input type='text' value='chapter1' name='goal_item'><a href = '#' onclick = 'remove(this);'>X</a></div>";
+			var element = "<div><input type='text' name='goal_item'><a href = '#' onclick = 'remove(this);'>X</a></div>";
 			document.getElementById("add-goals").innerHTML += element;
 		}
 		

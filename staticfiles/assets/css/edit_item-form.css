@@ -81,6 +81,27 @@ p{
 	height: 50px;
 }
 
+.add-btn{
+	width: 50%;
+	text-align: left;
+	float: left;
+}
+
+.delete-btn{
+	width: 50%;
+	text-align: right;
+	float: left;
+}
+
+#delete-btn{
+	background-color: #cf6679 !important;
+	border-width: 2px;
+	font-weight: 400;
+	color: white;
+}
+
+
+
 #add-btn {
 	background-color: transparent !important;
 	border-color: #AEEE98;
