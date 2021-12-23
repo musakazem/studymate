@@ -131,7 +131,13 @@ def updateForm(request, pk):
 	
 
 
+def deleteGoal(request, pk):
 
+	item = Items.objects.get(id = pk)
 
+	print(item)
+	item.delete()
+
+	return redirect('dashboard')
 
 

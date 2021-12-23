@@ -23,6 +23,7 @@ body{
 }
 
 .progress-bar{
+	width: 70%;
 	height: 100%;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
@@ -59,19 +60,15 @@ h3{
 	font-weight: normal;
 }
 
-h3 a{
-	color: #FAFAFA;
-	font-size: 20px;
-	font-weight: normal;
+h3 span a{
+	font-size: 11pt;
+	color: #02DAC5;
 }
 
-h3 a:hover{
-	text-decoration-style: none;
-	color: #FAFAFA;
-	font-size: 20px;
-	font-weight: normal;
+h3 span a:hover{
+	color: #02DAC5;
+	text-decoration: none;
 }
-
 .progress-container{
 	margin: 0 20px 0 0;
 }

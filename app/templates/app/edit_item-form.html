@@ -10,6 +10,17 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/edit_item-form.css' %}">
 </head>
 <body>
+
+	<div id="pop-up" class="pop-up">
+			<div class="delete-alert">
+
+				<h3>Alert!</h3>
+				<p>Are you sure you want to remove this goal?</p>
+				<button onclick="close_alert();" id="cancel-btn" class="btn">Cancel</button>
+				<a href="{% url 'deleteGoal' pk=item.id %}"><button id="delete-btn" class="btn">Remove</button></a>
+			
+			</div>
+	</div>
 	<div class="container">
 		<div class="main">
 			<form id = "add-form" method="post" action="{% url 'updateForm' pk=item.id%}">
@@ -20,7 +31,7 @@
 				<div class="btn-container">
 					<div class="add-btn"><button type="button" id="add-btn" onclick="createNewElement();" class="btn">+ Goals</button></div>
 
-					<div class="delete-btn"><button type="button" id="delete-btn" class="btn">Remove goal</button></div>
+					<div class="delete-btn"><button onclick="show_alert();" type="button" id="delete-btn" class="btn">Remove goal</button></div>
 					
 				</div>
 				<br>
@@ -47,6 +58,14 @@
 		function remove(el) {
 			var element = el.parentElement;
 			element.remove();
+		}
+
+		function show_alert() {
+			document.getElementById("pop-up").style.display = "block";
+		}
+
+		function close_alert() {
+			document.getElementById("pop-up").style.display = "none";
 		}
 	</script>
 </body>
